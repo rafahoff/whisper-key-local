@@ -304,6 +304,9 @@ console: # Console Window Management (whisper-key-hideable.exe only)
     start_hidden: false
 
 update: # Update Settings
+    # Check PyPI for new versions on startup
+    enabled: false
+
     # How to handle available updates
     # "prompt" = ask user before updating
     # "auto" = update silently without asking

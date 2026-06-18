@@ -34,6 +34,10 @@ def is_newer(latest, current):
 
 
 def check_for_updates(config_manager, test_mode=False):
+    update_config = config_manager.get_update_config()
+    if not update_config.get('enabled', False):
+        return
+
     version = get_version()
     is_dev = version.endswith("-dev") or test_mode
 
@@ -45,8 +49,6 @@ def check_for_updates(config_manager, test_mode=False):
     if is_dev:
         print(f"   ** Update available: {version} -> {latest} (git pull to update)")
         return
-
-    update_config = config_manager.get_update_config()
 
     if update_config.get('mode') == 'auto':
         run_update(latest)
